@@ -30,7 +30,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Run Super-Linter
-      uses: github/super-linter@v3
+      uses: github/super-linter@v4
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required for commenting on PRs
         DEBUG: true
