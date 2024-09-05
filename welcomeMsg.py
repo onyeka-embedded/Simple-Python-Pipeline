@@ -1,5 +1,5 @@
 def display_instructions():
-    instructions = """
+    instructions1 = """
     Welcome to the CGPA Calculator App!
 
     This tool helps you calculate your Cumulative Grade Point Average (CGPA) based on the courses you've taken, their grades, and corresponding credit units.
@@ -11,7 +11,8 @@ def display_instructions():
          - Course Name: Enter the name of the course (e.g., "Math").
          - Grade: Enter the grade you received (e.g., "A", "B", "C").
          - Credit Unit: Enter the credit unit of the course (e.g., 5, 4, 3).
-
+    """
+    instructions2 = """
     2. Grade Format:
        - Use letter grades such as "A", "B", "C", etc. The app will automatically convert these to the corresponding grade points based on the grading scale:
          - A = 5.0
@@ -26,13 +27,6 @@ def display_instructions():
 
     4. Calculate Your CGPA:
        - Once all courses have been entered, the app will compute your CGPA and display it.
-
-    Example:
-    For a student taking the following courses:
-      - Math (Grade: A, Credit Unit: 3)
-      - English (Grade: B, Credit Unit: 2)
-      - Physics (Grade: C, Credit Unit: 4)
-
-    The app will calculate and display your CGPA based on these values.
     """
-    print(instructions)
+    print(instructions1)
+    print(instructions2)
