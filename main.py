@@ -1,8 +1,10 @@
 from logics import CalculateCgpa
+from welcomeMsg import display_instructions
 
 
 def main():
     courses = []
+    display_instructions()
     student_name = input("Enter the student's name: ")
 
     while True:
