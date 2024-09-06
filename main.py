@@ -3,8 +3,8 @@ from welcomeMsg import display_instructions
 
 
 def main():
-    courses = []
-    display_instructions()
+    courses = []  # variable to hold the courses; name, grade and credit unit
+    display_instructions()  # function to display the information about the projects
     student_name = input("Enter the student's name: ")
 
     while True:
