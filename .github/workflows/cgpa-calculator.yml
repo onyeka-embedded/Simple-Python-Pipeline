@@ -46,20 +46,22 @@ jobs:
     if: success()
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3
-            
+        uses: actions/checkout@v4
+      
       - name: Set environment variable for branch
         run: |
-          if [ $GITHUB_EVENT_NAME == 'pull_request' ]; then
-           echo "BRANCH_TO_MERGE=${{ github.head_ref }}" >> $GITHUB_ENV
+          if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
+            echo "BRANCH_TO_MERGE=${{ github.head_ref }}" >> $GITHUB_ENV
           else
-            echo "BRANCH_TO_MERGE=${{ github.ref_name }}" >> $GITHUB_ENV
+            echo "BRANCH_TO_MERGE=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
           fi
-          
+      
       - name: Merge branch to main
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git checkout main
-          git merge "${{ env.BRANCH_TO_MERGE }}"
+          git merge "${BRANCH_TO_MERGE}"
           git push origin main
+        env:
+          BRANCH_TO_MERGE: ${{ env.BRANCH_TO_MERGE }}
