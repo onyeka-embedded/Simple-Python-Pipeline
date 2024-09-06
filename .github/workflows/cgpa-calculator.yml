@@ -49,8 +49,13 @@ jobs:
         uses: actions/checkout@v4
             
       - name: Set environment variable for branch
-        run: echo "BRANCH_TO_MERGE=${{ github.ref_name }}" >> $GITHUB_ENV
-      
+        run: |
+          if [ $GITHUB_EVENT_NAME == 'pull_request' ]; then
+           echo "BRANCH_TO_MERGE=${{ github.head_ref }}" >> $GITHUB_ENV
+          else
+            echo "BRANCH_TO_MERGE=${{ github.ref_name }}" >> $GITHUB_ENV
+          fi
+          
       - name: Merge branch to main
         run: |
           git config --global user.name "github-actions[bot]"
