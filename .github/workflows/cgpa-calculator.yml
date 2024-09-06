@@ -46,15 +46,15 @@ jobs:
     if: success()
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Set environment variable for branch
-        run: echo "BRANCH_TO_MERGE=${{ github.head_ref }}" >> $GITHUB_ENV
+        run: echo "BRANCH_TO_MERGE=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
       
       - name: Merge branch to main
         run: |
-                git config --global user.name "github-actions[bot]"
-                git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                git checkout main
-                git merge "${{ env.BRANCH_TO_MERGE }}"  # Use environment variable safely
-                git push origin main
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout main
+          git merge "${{ env.BRANCH_TO_MERGE }}"
+          git push origin main
