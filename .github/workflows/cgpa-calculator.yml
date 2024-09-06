@@ -47,9 +47,9 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
-      
+            
       - name: Set environment variable for branch
-        run: echo "BRANCH_TO_MERGE=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+        run: echo "BRANCH_TO_MERGE=${{ github.ref_name }}" >> $GITHUB_ENV
       
       - name: Merge branch to main
         run: |
